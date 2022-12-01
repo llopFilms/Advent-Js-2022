@@ -1,3 +1,3 @@
 # adventjs
 
-##24 days - 24 coding challenges
+## 24 days - 24 coding challenges
