@@ -20,13 +20,13 @@ Things to keep in mind:
 const packOfGifts = ["book", "doll", "ball"];
 const reindeers = ["dasher", "dancer"];
 
-const distributeGifts = (packOfGifts, reindeers) =>
+const distributeGifts3 = (packOfGifts, reindeers) =>
   parseInt(
     reindeers.reduce((acc, reindeer) => acc + reindeer.length * 2, 0) /
       packOfGifts.reduce((acc, gift) => acc + gift.length, 0)
   );
 
-console.log(distributeGifts(packOfGifts, reindeers));
+console.log(distributeGifts3(packOfGifts, reindeers));
 
 const distributeGifts2 = (packOfGifts, reindeers) => {
   return Math.floor(reindeers.join("").length*2/packOfGifts.join("").length)

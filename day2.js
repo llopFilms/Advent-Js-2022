@@ -25,7 +25,7 @@ Things to keep in mind:
 
 //
 
-function countHours(year, holidays) {
+function countHours2(year, holidays) {
   return holidays
     .map((holiday) => {
       const weekDay = new Date(
@@ -36,8 +36,15 @@ function countHours(year, holidays) {
     .reduce((a, b) => a + b);
 }
 
-console.log(countHours(2022, ["01/06", "04/01", "12/25"]));
+console.log(countHours2(2022, ["01/06", "04/01", "12/25"]));
+
+function countHours3(year, holidays) {
+  return holidays.map((date) => new Date(`${date} / ${year}`).getDay()).filter((day) => day > 0 && day < 6).length * 2;
+}
 
 function countHours(year, holidays) {
-  return holidays.map((date) => new Date(`${date} / ${year}`).getDay()).filter((day) => day > 0 && day < 6).length * 2;
+  return holidays.reduce((prev, holiday) => {
+    const date = new Date(`${year}/${holiday}`).getDay();
+    return ![0, 6].includes(date) ? prev + 2 : prev;
+  }, 0);
 }

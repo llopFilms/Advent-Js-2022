@@ -54,7 +54,7 @@ Things to keep in mind:
     The boxes may come in any order.
     The boxes are not always squares, they could be rectangles. */
 
-const fitsInOneBox = (boxes) => {
+const fitsInOneBox2 = (boxes) => {
   return boxes
     .sort((curr, prev) => {
       if (curr.l < prev.l) return -1;
@@ -66,6 +66,16 @@ const fitsInOneBox = (boxes) => {
       return true;
     });
 }
+
+function fitsInOneBox(boxes) {
+  return boxes
+    .sort((curr, prev) => curr.l - prev.l)
+    .every((box, index) => {
+      if (index === 0) return true;
+      return box.w > boxes[index - 1].w && box.h > boxes[index - 1].h;
+    });
+}
+
 
 console.log(
   fitsInOneBox([

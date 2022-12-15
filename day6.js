@@ -76,17 +76,37 @@ function createCube2(size) {
 
 createCube2(3);
 
-function createCube(size) {
+function createCube4(size) {
   let head = "";
   let tail = "";
   let i;
 
   for (i = 1; i <= size; i++) {
     head += " ".repeat(size - i) + "/\\".repeat(i) + "_\\".repeat(size) + "\n";
-    tail += " ".repeat(i - 1) + "\\/".repeat(size - i + 1) + "_/".repeat(size) + "\n";
+    tail +=
+      " ".repeat(i - 1) + "\\/".repeat(size - i + 1) + "_/".repeat(size) + "\n";
   }
   const cube = head + tail;
   return cube.slice(0, cube.length - 1);
 }
 
-console.log(createCube(3));
+console.log(createCube4(3));
+
+function createCube(size) {
+  return [
+    ...Array.from(
+      { length: size },
+      (v, index) =>
+        " ".repeat(size - index - 1) +
+        "/\\".repeat(index + 1) +
+        "_\\".repeat(size)
+    ),
+    ...Array.from(
+      { length: size },
+      (v, index) =>
+        " ".repeat(index) +
+        "\\/".repeat(size - index) +
+        "_/".repeat(size)
+    ),
+  ].join("\n");
+}
